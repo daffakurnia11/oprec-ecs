@@ -1,0 +1,177 @@
+#info-oprec {
+    // .container {
+    //     max-width: 1140px;
+    // }
+    position: relative;
+    min-height: 100vh;
+    .oprec-bg {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 80vh;
+        max-width: 100%;
+    }
+    .ecs-logo {
+        position: absolute;
+        top: 3rem;
+        right: 4rem;
+    }
+    .oprec-content {
+        .kingsman-logo {
+            width: 80px;
+        }
+        h1.oprec-title {
+            font-family: $font-schoolbook;
+            font-size: 3.5rem;
+            letter-spacing: 0.25rem;
+            text-transform: uppercase;
+        }
+        h2.oprec-title {
+            font-family: $font-schoolbook;
+            font-weight: bold;
+            font-size: 2.75rem;
+            letter-spacing: 0.25rem;
+            text-transform: uppercase;
+        }
+        .oprec-subtitle {
+            font-family: $font-poppins;
+            font-weight: bold;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            letter-spacing: 1.25rem;
+            text-transform: uppercase;
+        }
+        .oprec-divider {
+            margin: 1.5rem 0;
+            content: "";
+            height: 5px;
+            width: 100%;
+            background-color: $color-gold;
+        }
+        .oprec-desc {
+            font-family: $font-schoolbook;
+            font-size: 2rem;
+            line-height: 2.5rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+        .oprec-button {
+            display: block;
+            width: fit-content;
+            background: linear-gradient(
+                151.1deg,
+                rgba(168, 125, 29, 0.58) -22.22%,
+                #000000 112.01%
+            );
+            border-radius: 15px;
+            padding: 1rem 2rem;
+            font-family: $font-schoolbook;
+            font-size: 1.25rem;
+            line-height: 24px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: $color-gold;
+        }
+        .oprec-notif {
+            font-family: $font-schoolbook;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            color: $color-gold;
+        }
+    }
+}
+@media screen and (max-width: 992px) {
+    #info-oprec {
+        .oprec-content {
+            .kingsman-logo {
+                width: 60px;
+            }
+            h1.oprec-title {
+                font-size: 3rem;
+                letter-spacing: 0.2rem;
+            }
+            .oprec-subtitle {
+                letter-spacing: 1rem;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    #info-oprec {
+        .oprec-content {
+            .kingsman-logo {
+                width: 60px;
+            }
+            h1.oprec-title {
+                font-size: 2.4rem;
+                letter-spacing: 0.2rem;
+            }
+            h2.oprec-title {
+                font-size: 2rem;
+                letter-spacing: 0.15rem;
+            }
+            .oprec-subtitle {
+                font-size: 1rem;
+                letter-spacing: 0.75rem;
+            }
+            .oprec-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                line-height: 24px;
+                letter-spacing: 0.3em;
+            }
+            .oprec-notif {
+                font-size: 1rem;
+                letter-spacing: 0.1rem;
+                text-transform: unset;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #info-oprec {
+        .ecs-logo {
+            top: 2rem;
+            right: 2.5rem;
+            width: 90px;
+        }
+    }
+}
+
+@media screen and (max-width: 505px) {
+    #info-oprec {
+        .oprec-content {
+            .kingsman-logo {
+                width: 40px;
+            }
+            h1.oprec-title {
+                font-size: 1.5rem;
+                letter-spacing: 0rem;
+            }
+            h2.oprec-title {
+                font-size: 1.25rem;
+                letter-spacing: 0.15rem;
+            }
+            .oprec-subtitle {
+                font-size: 1rem;
+                letter-spacing: 0.3rem;
+            }
+            .oprec-divider {
+                height: 2px;
+            }
+            .oprec-desc {
+                font-size: 1.5rem;
+                letter-spacing: 0.1rem;
+                text-transform: uppercase;
+            }
+            .oprec-button {
+                padding: 0.5rem 1.5rem;
+                font-size: 1rem;
+                line-height: 24px;
+                letter-spacing: 0.2rem;
+            }
+        }
+    }
+}
