@@ -105,11 +105,51 @@ a:hover {
   color: #a87d1d;
 }
 
+#info-oprec .oprec-content .oprec-info {
+  background-color: transparent;
+  border: none;
+  color: #a87d1d;
+  font-size: 1.25rem;
+  letter-spacing: 0.15rem;
+  padding: 0;
+}
+
 #info-oprec .oprec-content .oprec-notif {
   font-family: "Schoolbook";
   font-size: 1.5rem;
   text-transform: uppercase;
   color: #a87d1d;
+}
+
+.modal-content {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-content .modal-header,
+.modal-content .modal-footer {
+  border-color: #a87d1d;
+}
+
+.modal-content .modal-close-button {
+  display: block;
+  width: fit-content;
+  background: linear-gradient(151.1deg, rgba(168, 125, 29, 0.58) -22.22%, #000000 112.01%);
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1.5rem;
+  font-family: "Schoolbook";
+  font-size: 1.25rem;
+  color: #a87d1d;
+}
+
+.modal-content .modal-body > h5 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+}
+
+.modal-content .modal-body > ol > li {
+  font-family: "Schoolbook";
+  font-size: 1.15rem;
 }
 
 @media screen and (max-width: 992px) {

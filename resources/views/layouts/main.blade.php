@@ -11,7 +11,7 @@
     <!-- Animate on Scroll -->
     <link rel="stylesheet" href="/vendor/aos/dist/aos.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?modify={{ date("Ymdhis") }}">
 
     <title>Open Recruitment 2022 - ECS Laboratory</title>
 </head>
@@ -23,7 +23,7 @@
     <script src="/vendor/jquery/dist/jquery.js"></script>
     <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/vendor/aos/dist/aos.js"></script>
-    <script src="/js/script.js"></script>
+    <script src="/js/script.js?modify={{ date("Ymdhis") }}"></script>
 </body>
 
 </html>

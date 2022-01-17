@@ -19,10 +19,45 @@
                 <p class="oprec-subtitle text-center" data-aos="fade-up" data-aos-delay="250">Are you our next agent?
                 </p>
                 <div class="oprec-divider" data-aos="zoom-in" data-aos-delay="750"></div>
-                <a href="/registration" class="oprec-button mx-auto mx-xl-0" data-aos="fade-up" data-aos-delay="500">Register Now</a>
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                    <a href="/registration" class="oprec-button mx-auto mx-md-0" data-aos="fade-up" data-aos-delay="500">Register Now</a>
+                    <button type="button" class="d-block oprec-info mt-3 mt-md-0" data-aos="fade-up" data-aos-delay="750"  data-bs-toggle="modal" data-bs-target="#exampleModal">Read the requirements</button>
+                </div>
             @endif
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">REQUIREMENTS</h5>
+        </div>
+        <div class="modal-body">
+            <h5>Persyaratan Umum</h5>
+            <ol>
+                <li>Beriman kepada Tuhan Yang Maha Esa</li>
+                <li>Warga F54 & F55</li>
+                <li>Berkomitmen Tinggi</li>
+                <li>Mau Belajar</li>
+            </ol>
+            <H5>Persyaratan Berkas</H5>
+            <ol>
+                <li>Curriculum Vitae</li>
+                <li>MBTI (16 Personalities)</li>
+                <li>Motivation Letter</li>
+                <li>Essay tentang ECS dan divisi yang dipilih</li>
+                <li>Surat komitmen selama menjadi Aslab ECS</li>
+                <li>Wajib follow akun instagram ECS</li>
+            </ol>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="modal-close-button" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @endsection
