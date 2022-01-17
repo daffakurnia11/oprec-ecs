@@ -12,7 +12,7 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $open = Carbon::create(2022, 1, 17, 0, 0, 0);
+        $open = Carbon::create(2022, 1, 17, 12, 0, 0);
         $closed = Carbon::create(2022, 1, 23, 23, 59, 59);
         $timenow = Carbon::now();
 
@@ -27,7 +27,7 @@ class PagesController extends Controller
 
     public function registration()
     {
-        $open = Carbon::create(2022, 1, 17, 0, 0, 0);
+        $open = Carbon::create(2022, 1, 17, 12, 0, 0);
         $closed = Carbon::create(2022, 1, 23, 23, 59, 59);
         $timenow = Carbon::now();
 
@@ -40,7 +40,7 @@ class PagesController extends Controller
 
     public function submittion(Request $request)
     {
-        $open = Carbon::create(2022, 1, 17, 0, 0, 0);
+        $open = Carbon::create(2022, 1, 17, 12, 0, 0);
         $closed = carbon::create(2022, 1, 23, 23, 59, 59);
         $timenow = Carbon::now();
 
