@@ -40,6 +40,14 @@ class PagesController extends Controller
 
     public function submittion(Request $request)
     {
+        $open = Carbon::create(2022, 1, 17, 12, 0, 0);
+        $closed = carbon::create(2022, 1, 23, 23, 59, 59);
+        $timenow = Carbon::now();
+
+        if ($timenow->lessThan($open) || $timenow->greaterThan($closed)) {
+            return view('oprec-info.closed');
+        }
+
         $validated = $request->validate([
             'name'          => 'required',
             'number'        => 'required|unique:applicants',
@@ -57,9 +65,12 @@ class PagesController extends Controller
             'commitment'    => 'required|mimes:pdf|max:5120',
         ]);
 
-        if ($request->hasFile('essay') && $request->hasFile('cv') && $request->hasFile('mbti') && $request->hasFile('motlet') && $request->hasFile('commitment')) {
+        if ($request->hasFile('essay') && $request->hasFile('screenshot') && $request->hasFile('cv') && $request->hasFile('mbti') && $request->hasFile('motlet') && $request->hasFile('commitment')) {
             $essayFile = $validated['number'] . '_Essay.' . $request->essay->extension();
             $request->essay->move(public_path('files/essay'), $essayFile);
+
+            $screenshotFile = $validated['number'] . '_Screenshot.' . $request->screenshot->extension();
+            $request->screenshot->move(public_path('files/screenshot'), $screenshotFile);
 
             $cvFile = $validated['number'] . '_CV.' . $request->cv->extension();
             $request->cv->move(public_path('files/cv'), $cvFile);

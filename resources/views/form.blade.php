@@ -102,45 +102,51 @@
         </div>
         <div id="pageThree" style="display: none;">
             <div class="row">
-                <div class="col-12 mb-4">
-                    <label for="essay" class="form-label mb-0">Essay</label>
-                    <span class="d-block mb-2">Essay tentang ECS dan divisi yang dipilih</span>
+                <div class="col-md-6 mb-4">
+                    <label for="essay" class="form-label">Essay</label>
                     <input class="form-control" type="file" accept=".pdf" name="essay" id="essay" tabindex="12">
                     @error('essay')
                         <small class="text-warning">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="col-md-6 mb-4">
+                    <label for="screenshot" class="form-label">Screenshot Follow Instagram ECS</label>
+                    <input class="form-control" type="file" accept=".jpg,.jpeg,.png" name="screenshot" id="screenshot" tabindex="13">
+                    @error('screenshot')
+                        <small class="text-warning">{{ $message }}</small>
+                    @enderror
+                </div>
+                <div class="col-md-6 mb-4">
                     <label for="cv" class="form-label">Curriculum Vitae</label>
-                    <input class="form-control" type="file" accept=".pdf" name="cv" id="cv" tabindex="13">
+                    <input class="form-control" type="file" accept=".pdf" name="cv" id="cv" tabindex="14">
                     @error('cv')
                         <small class="text-warning">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="col-md-6 mb-4">
                     <label for="mbti" class="form-label">MBTI</label>
-                    <input class="form-control" type="file" accept=".pdf" name="mbti" id="mbti" tabindex="14">
+                    <input class="form-control" type="file" accept=".pdf" name="mbti" id="mbti" tabindex="15">
                     @error('mbti')
                         <small class="text-warning">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="col-md-6 mb-4">
                     <label for="motlet" class="form-label">Motivation Letter</label>
-                    <input class="form-control" type="file" accept=".pdf" name="motlet" id="motlet" tabindex="15">
+                    <input class="form-control" type="file" accept=".pdf" name="motlet" id="motlet" tabindex="16">
                     @error('motlet')
                         <small class="text-warning">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="col-md-6 mb-4">
                     <label for="commitment" class="form-label">Surat Komitmen</label>
-                    <input class="form-control" type="file" accept=".pdf" name="commitment" id="commitment" tabindex="16">
+                    <input class="form-control" type="file" accept=".pdf" name="commitment" id="commitment" tabindex="17">
                     @error('commitment')
                         <small class="text-warning">{{ $message }}</small>
                     @enderror
                 </div>
             </div>
             <div class="d-flex flex-row-reverse my-3 justify-content-between">
-                <button type="submit" class="form-button" tabindex="17">Submit</button>
+                <button type="submit" class="form-button" tabindex="18">Submit</button>
                 <button type="button" class="form-button" id="three-to-two">Back</button>
             </div>
         </div>

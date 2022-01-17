@@ -16,6 +16,7 @@ class CreateApplicantFilesTable extends Migration
         Schema::create('applicant_files', function (Blueprint $table) {
             $table->id();
             $table->foreignId('applicant_id');
+            $table->string('screenshot');
             $table->string('essay');
             $table->string('cv');
             $table->string('mbti');
