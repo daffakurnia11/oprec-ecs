@@ -52,7 +52,7 @@ class PagesController extends Controller
             'name'          => 'required',
             'number'        => 'required|unique:applicants',
             'email'         => 'required|email:dns|unique:applicants',
-            'line_id'       => 'required|alpha_dash|unique:applicants',
+            'line_id'       => 'required|unique:applicants',
             'whatsapp'      => 'required|numeric|digits_between:10,13|unique:applicants',
             'first_choice'  => 'required|different:second_choice',
             'first_reason'  => 'required',
