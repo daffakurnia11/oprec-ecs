@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PagesController::class, 'index']);
 Route::get('/registration', [PagesController::class, 'registration']);
 Route::post('/registration', [PagesController::class, 'submittion']);
+
+Route::get('/Announcement', [PagesController::class, 'announcement']);
+Route::get('/Announcement/not-eligible', [PagesController::class, 'not_eligible']);
+Route::get('/Announcement/{applicant_interview}', [PagesController::class, 'accepted']);
+Route::post('/codecheck', [PagesController::class, 'codecheck']);
+Route::put('/Announcement/{applicant_interview}', [PagesController::class, 'attendInterview']);

@@ -1,0 +1,112 @@
+#announce-oprec {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .announce {
+        padding: 0 2rem 2rem;
+        width: 500px;
+        max-width: 100%;
+        background: linear-gradient(
+            151.1deg,
+            rgba(168, 125, 29, 0.58) -22.22%,
+            $color-black 112.01%
+        );
+        border-radius: 25px;
+        .kingsman-logo {
+            margin: -45px auto 30px;
+            width: 180px;
+        }
+        .form-label {
+            font-family: $font-schoolbook;
+            font-size: 1.25rem;
+            color: $color-white;
+        }
+        .form-control,
+        .form-select {
+            border: 1px solid #f2c664;
+            box-sizing: border-box;
+            border-radius: 10px;
+            background: transparent;
+            color: inherit;
+            &:active,
+            &:focus {
+                background: transparent;
+                color: inherit;
+            }
+        }
+    }
+}
+.announce-button {
+    display: block;
+    background: $color-gold;
+    border-radius: 7px;
+    font-family: $font-schoolbook;
+    font-size: 1.25rem;
+    color: $color-white;
+    padding: 0.3rem 2rem;
+    border: none;
+}
+
+#announce {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .announce-bg {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+    }
+    .announce {
+        padding: 0 2.5rem 2rem;
+        width: 500px;
+        max-width: 100%;
+        background: linear-gradient(
+            151.1deg,
+            rgba(168, 125, 29, 0.58) -22.22%,
+            $color-black 112.01%
+        );
+        border-radius: 25px;
+        .kingsman-logo {
+            margin: -45px auto 30px;
+            width: 180px;
+        }
+        & > p {
+            font-family: $font-schoolbook;
+            font-size: 1.1rem;
+            color: $color-white;
+        }
+        & > p.not-eligible {
+            font-family: $font-schoolbook;
+            font-size: 1.25rem;
+            line-height: 1.5rem;
+            color: $color-white;
+        }
+        & > h1 {
+            font-family: $font-schoolbook;
+            font-weight: bold;
+            font-size: 2.25rem;
+            color: $color-white;
+            text-transform: uppercase;
+            letter-spacing: 0.25rem;
+        }
+        & > h2 {
+            font-family: $font-schoolbook;
+            font-weight: bold;
+            font-size: 1.25rem;
+            line-height: 1.5rem;
+            color: $color-white;
+        }
+        .form-check-label {
+            font-family: $font-schoolbook;
+            font-size: 1rem;
+            color: $color-white;
+        }
+    }
+}

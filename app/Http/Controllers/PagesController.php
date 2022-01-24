@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Applicant;
 use App\Models\Applicant_choice;
 use App\Models\Applicant_file;
+use App\Models\Applicant_interview;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -108,5 +109,43 @@ class PagesController extends Controller
             ]);
             return redirect('/')->with('message', 'Submitted');
         }
+    }
+
+    public function announcement()
+    {
+        return view('oprec-info.interview.announce');
+    }
+
+    public function codecheck(Request $request)
+    {
+        $validated = $request->validate([
+            'number'    => 'required'
+        ]);
+
+        $data = Applicant_interview::firstWhere('number', $validated['number']);
+
+        if ($data) {
+            return redirect('/Announcement/' . $validated['number']);
+        } else {
+            return redirect('/Announcement/not-eligible');
+        }
+    }
+
+    public function accepted(Applicant_interview $applicant_interview)
+    {
+        return view('oprec-info.interview.accepted', compact('applicant_interview'));
+    }
+
+    public function not_eligible()
+    {
+        return view('oprec-info.interview.not_eligible');
+    }
+
+    public function attendInterview(Request $request, Applicant_interview $applicant_interview)
+    {
+        $applicant_interview->update([
+            'attend'    => 1
+        ]);
+        return redirect('/Announcement/' . $applicant_interview->number);
     }
 }

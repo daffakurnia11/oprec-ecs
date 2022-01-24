@@ -22,6 +22,7 @@ return array(
     'App\\Models\\Applicant' => $baseDir . '/app/Models/Applicant.php',
     'App\\Models\\Applicant_choice' => $baseDir . '/app/Models/Applicant_choice.php',
     'App\\Models\\Applicant_file' => $baseDir . '/app/Models/Applicant_file.php',
+    'App\\Models\\Applicant_interview' => $baseDir . '/app/Models/Applicant_interview.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

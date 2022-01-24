@@ -532,6 +532,7 @@ class ComposerStaticInit426e828b5a377a0bc94d1db58629ca2d
         'App\\Models\\Applicant' => __DIR__ . '/../..' . '/app/Models/Applicant.php',
         'App\\Models\\Applicant_choice' => __DIR__ . '/../..' . '/app/Models/Applicant_choice.php',
         'App\\Models\\Applicant_file' => __DIR__ . '/../..' . '/app/Models/Applicant_file.php',
+        'App\\Models\\Applicant_interview' => __DIR__ . '/../..' . '/app/Models/Applicant_interview.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

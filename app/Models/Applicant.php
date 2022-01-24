@@ -22,4 +22,9 @@ class Applicant extends Model
     {
         return $this->hasOne(Applicant_file::class);
     }
+
+    public function applicant_interview()
+    {
+        return $this->hasOne(Applicant_interview::class);
+    }
 }
