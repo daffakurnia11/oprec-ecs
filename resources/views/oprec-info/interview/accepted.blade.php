@@ -20,7 +20,9 @@
         {{ $applicant_interview->time_schedule }}
       </h2>
       @if ($applicant_interview->attend == TRUE)
-      <p class="text-center mt-5">{{ $applicant_interview->applicant->name }} has been attended the Interview!</p>          
+      <p class="text-center mt-5">{{ $applicant_interview->applicant->name }} has been attended the Interview!</p>
+      <p class="text-center">Click the button below to join the Interview session!</p>
+      <a href="{{ $link->link }}" target="_blank" class="announce-button mx-auto mb-4">Join Interview!</a>          
       @else
       <form action="/Announcement/{{ $applicant_interview->number }}" method="post">
         @csrf

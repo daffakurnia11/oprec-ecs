@@ -6,6 +6,7 @@ use App\Models\Applicant;
 use App\Models\Applicant_choice;
 use App\Models\Applicant_file;
 use App\Models\Applicant_interview;
+use App\Models\Applicant_link;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -133,7 +134,10 @@ class PagesController extends Controller
 
     public function accepted(Applicant_interview $applicant_interview)
     {
-        return view('oprec-info.interview.accepted', compact('applicant_interview'));
+        return view('oprec-info.interview.accepted', [
+            'applicant_interview'   => $applicant_interview,
+            'link'                  => Applicant_link::firstWhere('id', 1)
+        ]);
     }
 
     public function not_eligible()

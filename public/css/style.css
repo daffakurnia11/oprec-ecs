@@ -322,12 +322,17 @@ a:hover {
 .announce-button {
   display: block;
   background: #a87d1d;
+  width: fit-content;
   border-radius: 7px;
   font-family: "Schoolbook";
   font-size: 1.25rem;
   color: #fff;
   padding: 0.3rem 2rem;
   border: none;
+}
+
+.announce-button:hover {
+  color: #fff;
 }
 
 #announce {
