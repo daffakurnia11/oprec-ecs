@@ -23,3 +23,7 @@ Route::get('/Announcement/not-eligible', [PagesController::class, 'not_eligible'
 Route::get('/Announcement/{applicant_interview}', [PagesController::class, 'accepted']);
 Route::post('/codecheck', [PagesController::class, 'codecheck']);
 Route::put('/Announcement/{applicant_interview}', [PagesController::class, 'attendInterview']);
+
+Route::get('/lanjut-terus-cari-clue-nya', function () {
+  return view('nextclue');
+});
