@@ -25,7 +25,7 @@
                     @else
                     <a href="{{ $course->slug }}/registrasi" class="btn btn-primary d-block ms-auto card-link">Registrasi</a>
                     @endif
-                    <a href="#" class="mt-2 d-block text-center">{{ $course->contact }}</a>
+                    <a href="{{ $course->contact }}" class="mt-2 d-block text-center">Contact Person</a>
                   </div>
                 </div>
               </div>

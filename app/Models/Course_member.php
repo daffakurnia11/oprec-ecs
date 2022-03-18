@@ -10,7 +10,7 @@ class Course_member extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'course_id', 'classes', 'krsm'
+        'user_id', 'course_id', 'classes', 'krsm', 'course_group_id'
     ];
 
     public function user()
@@ -21,5 +21,10 @@ class Course_member extends Model
     public function course()
     {
         return $this->hasOne(Course::class);
+    }
+
+    public function course_group()
+    {
+        return $this->belongsTo(Course_group::class);
     }
 }

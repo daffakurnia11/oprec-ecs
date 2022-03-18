@@ -31,14 +31,17 @@ Route::middleware('auth')->group(function () {
   Route::get('/profil', [PagesController::class, 'profile']);
   Route::post('/profil/{user}', [PagesController::class, 'profile_update']);
 
+  Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index']);
+    // Route::resource('course', CourseController::class);
+    Route::prefix('{course:slug}')->group(function () {
+      Route::get('/pendaftar', [CourseController::class, 'member']);
+    });
+  });
+
   Route::prefix('{course:slug}')->group(function () {
     Route::get('/registrasi', [CourseMemberController::class, 'register']);
     Route::post('/', [CourseMemberController::class, 'submit']);
     Route::get('/', [CourseMemberController::class, 'index'])->middleware('membercheck');
   });
-
-  // Route::prefix('/admin')->group(function () {
-  //   Route::get('/', [AdminController::class, 'index']);
-  //   Route::resource('course', CourseController::class);
-  // });
 });

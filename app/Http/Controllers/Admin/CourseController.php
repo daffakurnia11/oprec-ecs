@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Course_member;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -84,5 +85,15 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         //
+    }
+
+    public function member(Course $course)
+    {
+        return view('admin.course.member', [
+            'title'     => 'Pendaftar ' . $course->course_name,
+            'courses'   => Course::all(),
+            'course'    => $course,
+            'members'   => Course_member::all()
+        ]);
     }
 }
