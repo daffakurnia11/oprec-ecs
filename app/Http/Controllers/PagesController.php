@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Applicant;
-use App\Models\Applicant_choice;
-use App\Models\Applicant_file;
-use App\Models\Applicant_interview;
-use App\Models\Applicant_link;
+use App\Models\Course;
+use App\Models\Profile;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -14,142 +12,51 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $open = Carbon::create(2022, 1, 17, 12, 0, 0);
-        $closed = Carbon::create(2022, 1, 23, 23, 59, 59);
-        $timenow = Carbon::now();
-
-        if ($timenow->greaterThan($open) && $timenow->lessThan($closed)) {
-            return view('oprec-info.open');
-        } elseif ($timenow->greaterThan($closed)) {
-            return view('oprec-info.closed');
-        } else {
-            return view('oprec-info.soon');
-        }
-    }
-
-    public function registration()
-    {
-        $open = Carbon::create(2022, 1, 17, 12, 0, 0);
-        $closed = Carbon::create(2022, 1, 23, 23, 59, 59);
-        $timenow = Carbon::now();
-
-        if ($timenow->greaterThan($open) && $timenow->lessThan($closed)) {
-            return view('form');
-        } else {
-            return view('oprec-info.soon');
-        }
-    }
-
-    public function submittion(Request $request)
-    {
-        $open = Carbon::create(2022, 1, 17, 12, 0, 0);
-        $closed = carbon::create(2022, 1, 23, 23, 59, 59);
-        $timenow = Carbon::now();
-
-        if ($timenow->lessThan($open) || $timenow->greaterThan($closed)) {
-            return view('oprec-info.closed');
-        }
-
-        $validated = $request->validate([
-            'name'          => 'required',
-            'number'        => 'required|unique:applicants',
-            'email'         => 'required|email:dns|unique:applicants',
-            'line_id'       => 'required|unique:applicants',
-            'whatsapp'      => 'required|numeric|digits_between:10,13|unique:applicants',
-            'first_choice'  => 'required|different:second_choice',
-            'first_reason'  => 'required',
-            'second_choice' => 'required|different:first_choice',
-            'second_reason' => 'required',
-            'essay'         => 'required|mimes:pdf|max:5120',
-            'cv'            => 'required|mimes:pdf|max:5120',
-            'mbti'          => 'required|mimes:pdf|max:5120',
-            'motlet'        => 'required|mimes:pdf|max:5120',
-            'commitment'    => 'required|mimes:pdf|max:5120',
+        return view('members.dashboard', [
+            'title'     => 'Dashboard',
+            'courses'   => Course::all()
         ]);
-
-        if ($request->hasFile('essay') && $request->hasFile('screenshot') && $request->hasFile('cv') && $request->hasFile('mbti') && $request->hasFile('motlet') && $request->hasFile('commitment')) {
-            $essayFile = $validated['number'] . '_Essay.' . $request->essay->extension();
-            $request->essay->move(public_path('files/essay'), $essayFile);
-
-            $screenshotFile = $validated['number'] . '_Screenshot.' . $request->screenshot->extension();
-            $request->screenshot->move(public_path('files/screenshot'), $screenshotFile);
-
-            $cvFile = $validated['number'] . '_CV.' . $request->cv->extension();
-            $request->cv->move(public_path('files/cv'), $cvFile);
-
-            $mbtiFile = $validated['number'] . '_MBTI.' . $request->mbti->extension();
-            $request->mbti->move(public_path('files/mbti'), $mbtiFile);
-
-            $motletFile = $validated['number'] . '_Motlet.' . $request->motlet->extension();
-            $request->motlet->move(public_path('files/motlet'), $motletFile);
-
-            $commitmentFile = $validated['number'] . '_Commitment.' . $request->commitment->extension();
-            $request->commitment->move(public_path('files/commitment'), $commitmentFile);
-
-            $foreignId = Applicant::create([
-                'name'          => $validated['name'],
-                'number'        => $validated['number'],
-                'email'         => $validated['email'],
-                'line_id'       => $validated['line_id'],
-                'whatsapp'      => $validated['whatsapp'],
-            ])->id;
-            Applicant_choice::create([
-                'applicant_id'  => $foreignId,
-                'first_choice'  => $validated['first_choice'],
-                'first_reason'  => $validated['first_reason'],
-                'second_choice' => $validated['second_choice'],
-                'second_reason' => $validated['second_reason'],
-            ]);
-            Applicant_file::create([
-                'applicant_id'  => $foreignId,
-                'essay'         => $essayFile,
-                'cv'            => $cvFile,
-                'mbti'          => $mbtiFile,
-                'motlet'        => $motletFile,
-                'commitment'    => $commitmentFile,
-            ]);
-            return redirect('/')->with('message', 'Submitted');
-        }
     }
 
-    public function announcement()
+    public function profile()
     {
-        return view('oprec-info.interview.announce');
+        return view('members.profile', [
+            'title'     => 'Edit Profil'
+        ]);
     }
 
-    public function codecheck(Request $request)
+    public function profile_update(Request $request, User $user)
     {
         $validated = $request->validate([
-            'number'    => 'required'
+            'name'              => 'required|max:255',
+            'email'             => 'required|email:dns|max:255',
+            'photo'             => 'nullable|max:2048|mimes:png,jpg,jpeg',
+            'university'        => 'required|max:255',
+            'major'             => 'required|max:255',
+            'student_number'    => 'required|max:255',
+            'batch'             => 'required|min:4|max:4',
+            'line_id'           => 'nullable|max:255',
+            'whatsapp'          => 'required|max:13'
         ]);
 
-        $data = Applicant_interview::firstWhere('number', $validated['number']);
+        $user->update($validated);
+        $validated['user_id'] = auth()->user()->id;
+        $profile = Profile::firstWhere('user_id', $validated['user_id']);
 
-        if ($data) {
-            return redirect('/Announcement/' . $validated['number']);
-        } else {
-            return redirect('/Announcement/not-eligible');
+        if ($request->hasFile('photo')) {
+            if ($profile->photo) {
+                unlink(public_path('img/photo_profile/' . $profile->photo));
+            }
+            $filename = $validated['name'] . '_photo.' . $validated['photo']->extension();
+            $validated['photo'] = $filename;
+            $request->photo->move(public_path('img/photo_profile'), $filename);
         }
-    }
+        if ($profile) {
+            $profile->update($validated);
+        } else {
+            Profile::create($validated);
+        }
 
-    public function accepted(Applicant_interview $applicant_interview)
-    {
-        return view('oprec-info.interview.accepted', [
-            'applicant_interview'   => $applicant_interview,
-            'link'                  => Applicant_link::firstWhere('id', 1)
-        ]);
-    }
-
-    public function not_eligible()
-    {
-        return view('oprec-info.interview.not_eligible');
-    }
-
-    public function attendInterview(Request $request, Applicant_interview $applicant_interview)
-    {
-        $applicant_interview->update([
-            'attend'    => 1
-        ]);
-        return redirect('/Announcement/' . $applicant_interview->number);
+        return back()->with('message', 'Profile updated');
     }
 }

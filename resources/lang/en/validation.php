@@ -114,9 +114,9 @@ return [
     'required_with_all' => 'The :attribute field is required when :values are present.',
     'required_without' => 'The :attribute field is required when :values is not present.',
     'required_without_all' => 'The :attribute field is required when none of :values are present.',
-    'same' => 'The :attribute and :other must match.',
+    'same' => ':attribute dan :other tidak sama.',
     'size' => [
-        'numeric' => 'The :attribute must be :size.',
+        'numeric' => ':attribute harus :size digit/karakter.',
         'file' => 'The :attribute must be :size kilobytes.',
         'string' => 'The :attribute must be :size characters.',
         'array' => 'The :attribute must contain :size items.',
@@ -158,20 +158,17 @@ return [
     */
 
     'attributes' => [
-        'name'          => 'Nama lengkap',
-        'number'        => 'No. warga',
-        'email'         => 'Email',
-        'line_id'       => 'ID Line',
-        'whatsapp'      => 'No. Whatsapp',
-        'first_choice'  => 'Divisi pertama',
-        'first_reason'  => 'Alasan',
-        'second_choice' => 'Divisi kedua',
-        'second_reason' => 'Alasan',
-        'essay'         => 'Essay',
-        'cv'            => 'CV',
-        'mbti'          => 'MBTI',
-        'motlet'        => 'Motivation letter',
-        'commitment'    => 'Surat komitmen',
+        'name'              => 'Nama lengkap',
+        'email'             => 'Email',
+        'password'          => 'Password',
+        'repeat'            => 'Ulangi password',
+        'photo'             => 'Foto Profil',
+        'student_number'    => 'NRP',
+        'university'        => 'Universitas',
+        'major'             => 'Jurusan',
+        'batch'             => 'Angkatan',
+        'line_id'           => 'ID Line',
+        'whatsapp'          => 'No whatsapp'
     ],
 
 ];

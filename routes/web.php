@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseMemberController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,16 +18,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PagesController::class, 'index']);
-Route::get('/registration', [PagesController::class, 'registration']);
-Route::post('/registration', [PagesController::class, 'submittion']);
+Route::middleware('guest')->group(function () {
+  Route::get('/signin', [AuthController::class, 'signin'])->name('login');
+  Route::post('/signin', [AuthController::class, 'authenticate']);
+  Route::get('/register', [AuthController::class, 'register']);
+  Route::post('/register', [AuthController::class, 'registration']);
+});
 
-Route::get('/Announcement', [PagesController::class, 'announcement']);
-Route::get('/Announcement/not-eligible', [PagesController::class, 'not_eligible']);
-Route::get('/Announcement/{applicant_interview}', [PagesController::class, 'accepted']);
-Route::post('/codecheck', [PagesController::class, 'codecheck']);
-Route::put('/Announcement/{applicant_interview}', [PagesController::class, 'attendInterview']);
+Route::middleware('auth')->group(function () {
+  Route::post('/logout', [AuthController::class, 'logout']);
+  Route::get('/', [PagesController::class, 'index']);
+  Route::get('/profil', [PagesController::class, 'profile']);
+  Route::post('/profil/{user}', [PagesController::class, 'profile_update']);
 
-Route::get('/lanjut-terus-cari-clue-nya', function () {
-  return view('nextclue');
+  Route::prefix('{course:slug}')->group(function () {
+    Route::get('/registrasi', [CourseMemberController::class, 'register']);
+    Route::post('/', [CourseMemberController::class, 'submit']);
+    Route::get('/', [CourseMemberController::class, 'index'])->middleware('membercheck');
+  });
+
+  // Route::prefix('/admin')->group(function () {
+  //   Route::get('/', [AdminController::class, 'index']);
+  //   Route::resource('course', CourseController::class);
+  // });
 });
