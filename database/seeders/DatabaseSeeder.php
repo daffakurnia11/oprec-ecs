@@ -38,10 +38,10 @@ class DatabaseSeeder extends Seeder
         $profile->whatsapp          = '085156317473';
         $profile->save();
 
-        User::factory(90)->create();
-        Profile::factory(90)->create();
-        Course_member::factory(80)->create();
-        Course_group::factory(10)->create();
+        // User::factory(90)->create();
+        // Profile::factory(90)->create();
+        // Course_member::factory(80)->create();
+        // Course_group::factory(10)->create();
 
         $course = new Course;
         $course->course_name    = 'Praktikum SPK';

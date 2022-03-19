@@ -17,7 +17,7 @@ class CreateCourseMembersTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('course_id');
-            $table->foreignId('course_group_id');
+            $table->foreignId('course_group_id')->nullable();
             $table->string('classes')->nullable();
             $table->string('krsm')->nullable();
             $table->timestamps();

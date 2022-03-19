@@ -27,6 +27,8 @@ class PagesController extends Controller
 
     public function profile_update(Request $request, User $user)
     {
+        $profile = Profile::firstWhere('user_id', auth()->user()->id);
+
         $validated = $request->validate([
             'name'              => 'required|max:255',
             'email'             => 'required|email:dns|max:255',
@@ -41,7 +43,6 @@ class PagesController extends Controller
 
         $user->update($validated);
         $validated['user_id'] = auth()->user()->id;
-        $profile = Profile::firstWhere('user_id', $validated['user_id']);
 
         if ($request->hasFile('photo')) {
             if ($profile->photo) {
@@ -51,6 +52,7 @@ class PagesController extends Controller
             $validated['photo'] = $filename;
             $request->photo->move(public_path('img/photo_profile'), $filename);
         }
+
         if ($profile) {
             $profile->update($validated);
         } else {
