@@ -12,6 +12,14 @@
       <div class="col-xl-9 col-lg-8">
         <div class="card rounded shadow-sm">
           <div class="card-body">
+
+            @if(session()->has('message') && session('message') == 'Regis Closed')
+            <div class="alert alert-danger alert-dismissible fade show radius-30 ps-4" role="alert">
+              Registrasi ditutup! Silakan hubungi Contact Person.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+
             <div class="row">
 
               @foreach ($courses as $course)
@@ -24,7 +32,7 @@
                     @if (auth()->user()->roles != 'Member')
                       <a href="{{ $course->slug }}" class="btn btn-success d-block ms-auto card-link">Dashboard</a>
                     @else
-                      @if (App\Models\Course_member::where('user_id', auth()->user()->id)->where('course_id', $course->id)->get())
+                      @if ((App\Models\Course_member::where('user_id', auth()->user()->id)->where('course_id', $course->id)->get())->isNotEmpty())
                         <a href="{{ $course->slug }}" class="btn btn-success d-block ms-auto card-link">Dashboard</a>
                       @else
                         <a href="{{ $course->slug }}/registrasi" class="btn btn-primary d-block ms-auto card-link">Registrasi</a>

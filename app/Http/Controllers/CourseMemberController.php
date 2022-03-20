@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Course_member;
+use Carbon\Carbon;
 
 class CourseMemberController extends Controller
 {
@@ -18,8 +19,11 @@ class CourseMemberController extends Controller
 
     public function register(Course $course)
     {
-        if (auth()->user()->profile) {
+        if (Carbon::now()->greaterThan($course->close_regis)) {
+            return redirect('/')->with('message', 'Regis Closed');
+        }
 
+        if (auth()->user()->profile) {
             return view('members.course.register', [
                 'title'     => 'Registrasi ' . $course->course_name,
                 'course'    => $course
