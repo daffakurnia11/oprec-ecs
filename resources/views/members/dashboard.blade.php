@@ -20,11 +20,17 @@
                   <div class="card-body">
                     <h5 class="card-title">{{ $course->course_name }}</h5>
                     <p class="card-text">{{ $course->desc }}</p>
-                    @if (App\Models\Course_member::where('user_id', auth()->user()->id)->where('course_id', $course->id)->first())
-                    <a href="{{ $course->slug }}" class="btn btn-success d-block ms-auto card-link">Dashboard</a>
+
+                    @if (auth()->user()->roles != 'Member')
+                      <a href="{{ $course->slug }}" class="btn btn-success d-block ms-auto card-link">Dashboard</a>
                     @else
-                    <a href="{{ $course->slug }}/registrasi" class="btn btn-primary d-block ms-auto card-link">Registrasi</a>
+                      @if (App\Models\Course_member::firstWhere('user_id', auth()->user()->id)->where('course_id', $course->id))
+                        <a href="{{ $course->slug }}" class="btn btn-success d-block ms-auto card-link">Dashboard</a>
+                      @else
+                        <a href="{{ $course->slug }}/registrasi" class="btn btn-primary d-block ms-auto card-link">Registrasi</a>
+                      @endif
                     @endif
+
                     <a href="{{ $course->contact }}" class="mt-2 d-block text-center">Contact Person</a>
                   </div>
                 </div>

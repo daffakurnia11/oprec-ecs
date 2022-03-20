@@ -21,7 +21,11 @@ class MemberCheck
         $param = $request->route()->parameters()['course'];
         $data = Course_member::where('user_id', $request->user()->id)->where('course_id', $param['id'])->first();
         if ($data == NULL) {
-            return redirect("/");
+            if (auth()->user()->roles == 'Member') {
+                return redirect('/');
+            } else {
+                return $next($request);
+            }
         } else {
             return $next($request);
         }

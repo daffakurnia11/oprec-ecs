@@ -41,8 +41,8 @@
               <td>{{ $member->user->name }}</td>
               <td class="text-center">{{ $member->user->profile->student_number }}</td>
               <td class="text-center">{{ $member->classes }}</td>
-              <td class="text-center">{{ $member->course_group->num_group }}</td>
-              <td>{{ $member->course_group->user->name }}</td>
+              <td class="text-center">{{ $member->course_group->num_group ?? '-' }}</td>
+              <td>{{ $member->course_group->user->name ?? '-' }}</td>
               <td>$320,800</td>
             </tr>
             @endforeach

@@ -15,10 +15,17 @@
         <i class="fs-5 d-block me-2 bi bi-envelope"></i>
         <span>{{ auth()->user()->email }}</span>
       </p>
+      @if (auth()->user()->roles == 'Member')
       <p class="mx-0 mx-sm-3 mb-2 d-flex align-items-center">
         <i class="fs-5 d-block me-2 bi bi-building"></i>
         <span>{{ 'Kelas ' . $data->classes ?: '-' }}</span>
       </p>
+      @else
+      <p class="mx-0 mx-sm-3 mb-2 d-flex align-items-center">
+        <i class="fs-5 d-block me-2 bi bi-building"></i>
+        <span>{{ auth()->user()->roles }}</span>
+      </p>
+      @endif
       {{-- <p class="mx-0 mx-sm-3 mb-2 d-flex align-items-center">
         <i class="fs-5 d-block me-2 bi bi-people-fill"></i>
         <span>{{ isset(auth()->user()->course_member->course_group->group) ? 'Kelompok ' . auth()->user()->course_member->course_group->group : 'Belum ada kelompok' }}</span>
