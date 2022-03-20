@@ -42,6 +42,6 @@ Route::middleware('auth')->group(function () {
   Route::prefix('{course:slug}')->group(function () {
     Route::get('/registrasi', [CourseMemberController::class, 'register']);
     Route::post('/', [CourseMemberController::class, 'submit']);
-    Route::get('/', [CourseMemberController::class, 'index'])->middleware('membercheck', 'adminaccess');
+    Route::get('/', [CourseMemberController::class, 'index'])->middleware('membercheck');
   });
 });
