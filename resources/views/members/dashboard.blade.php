@@ -24,7 +24,7 @@
                     @if (auth()->user()->roles != 'Member')
                       <a href="{{ $course->slug }}" class="btn btn-success d-block ms-auto card-link">Dashboard</a>
                     @else
-                      @if (App\Models\Course_member::firstWhere('user_id', auth()->user()->id)->where('course_id', $course->id))
+                      @if (App\Models\Course_member::where('user_id', auth()->user()->id)->where('course_id', $course->id)->get())
                         <a href="{{ $course->slug }}" class="btn btn-success d-block ms-auto card-link">Dashboard</a>
                       @else
                         <a href="{{ $course->slug }}/registrasi" class="btn btn-primary d-block ms-auto card-link">Registrasi</a>
