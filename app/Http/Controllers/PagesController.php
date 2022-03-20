@@ -47,10 +47,11 @@ class PagesController extends Controller
         if ($request->hasFile('photo')) {
             if ($profile->photo) {
                 unlink(public_path('img/photo_profile/' . $profile->photo));
+            } else {
+                $filename = $validated['name'] . '_photo.' . $validated['photo']->extension();
+                $validated['photo'] = $filename;
+                $request->photo->move(public_path('img/photo_profile'), $filename);
             }
-            $filename = $validated['name'] . '_photo.' . $validated['photo']->extension();
-            $validated['photo'] = $filename;
-            $request->photo->move(public_path('img/photo_profile'), $filename);
         }
 
         if ($profile) {
